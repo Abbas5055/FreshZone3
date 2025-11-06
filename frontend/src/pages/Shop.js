@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Plus, Minus, ShoppingCart } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -7,13 +7,24 @@ import { Badge } from '../components/ui/badge';
 import { Input } from '../components/ui/input';
 import { useCart } from '../context/CartContext';
 import { toast } from '../hooks/use-toast';
-import { products, categories } from '../mockData';
+import { products as initialProducts, categories } from '../mockData';
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { addToCart, cartItems, updateQuantity } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
+  const [products, setProducts] = useState([]);
   const selectedCategory = searchParams.get('category') || 'all';
+
+  useEffect(() => {
+    // Load products from admin or use default
+    const adminProducts = localStorage.getItem('adminProducts');
+    if (adminProducts) {
+      setProducts(JSON.parse(adminProducts));
+    } else {
+      setProducts(initialProducts);
+    }
+  }, []);
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
