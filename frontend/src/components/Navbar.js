@@ -76,11 +76,20 @@ const Navbar = () => {
                       </div>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigate('/wallet')}>
+                      <Wallet className="w-4 h-4 mr-2" />
+                      My Wallet
+                    </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => navigate('/orders')}>
                       My Orders
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => navigate('/profile')}>
                       Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigate('/admin/login')}>
+                      <Shield className="w-4 h-4 mr-2" />
+                      Admin Panel
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleLogout} className="text-red-600">
