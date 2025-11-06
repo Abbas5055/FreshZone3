@@ -18,6 +18,9 @@ import Zone from "./pages/Zone";
 import Login from "./pages/Login";
 import OrderSuccess from "./pages/OrderSuccess";
 import Profile from "./pages/Profile";
+import Wallet from "./pages/Wallet";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
